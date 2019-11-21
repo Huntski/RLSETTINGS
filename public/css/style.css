@@ -1,0 +1,688 @@
+/*
+*       Author: Wieb owo
+*/
+
+/* ---------- Reset Css ---------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ---------- Global Css ---------- */
+
+/*
+        color:
+            #27235c
+            #080714
+
+            #fda93b
+            #ea9525
+*/
+
+@font-face {
+    font-family: 'Avenir Roman';
+    src: url(../fonts/AvenirLTStd-Roman.otf);
+}
+
+@font-face {
+    font-family: 'Avenir Book';
+    src: url(../fonts/AvenirLTStd-Book.otf);
+}
+
+@font-face {
+    font-family: 'Avenir Black';
+    src: url(../fonts/AvenirLTStd-Black.otf);
+}
+
+* {
+    font-family: 'Avenir Roman', arial, sans-serif;
+}
+
+html {
+    scrollbar-width: none;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    background-image: linear-gradient( 161deg, #27235c 0%, #27235c 54%, #241e5a 54%, #241e5a 100%);
+    background-size: 100%;
+    background-repeat: none;
+    color: #fff;
+    scrollbar-width: none;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button, input {
+    border: none;
+    background: none;
+    font-family: 'Avenir Roman', Arial, Helvetica, sans-serif;
+}
+
+button, .link {
+    cursor: pointer;
+}
+
+.orange {
+    color: #ea9525;
+}
+
+.btn_active {
+    padding: 10px 20px;
+    color: #fff;
+    background: #fda93b;
+    text-transform: uppercase;
+    font-family: 'Avenir Black';
+    border-bottom: solid 8px #ea9525;
+    font-size: 0.8em;
+}
+.btn_active:active {
+    border-bottom-width: 2px;
+    margin-top: 6px;
+}
+
+/* .inp_open {
+    position: relative;
+    border-bottom: 2px solid #eeeeee79;
+    background-position-x: 10%;
+    width: 400px;
+    color: #fff;
+    padding: 20px 0 4px 0;
+    font-size: 0.9em;
+    transition: .3s;
+}
+.inp_open:hover, .inp_open:focus {
+    border-color: #fff;
+} */
+
+.inp_open {
+    position: relative;
+    background: #fff;
+    padding: 10px 15px;
+    width: 400px;
+    color: #000;
+}
+
+h1 {
+    font-family: 'Avenir Black';
+    font-size: 1.8em;
+}
+
+h3 {
+    color: #cdcdcd;
+    margin: 40px 0 0 0;
+}
+
+p {
+    margin-top: 9px;
+    line-height: 1.7;
+    font-family: 'Avenir Black';
+    color: #b4b3bd;
+    font-size: 0.9em;
+}
+
+/* Range input */
+
+input[type=range] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    background: #3a3aa7;
+    height: 50px;
+    margin: 5px 15px;
+    width: 400px;
+}
+
+input[type=range]::-moz-range-progress {
+    background: #4c4cc5;
+    height: 100%;
+}
+
+input[type=range]::-webkit-slider-thumb, input[type=range]::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 100%;
+    width: 1.5%;
+    border: none;
+    background: #ffffff;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+/* ---------- Layout Css ---------- */
+
+/* ----- Header ----- */
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    font-family: 'Avenir Black';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    margin-top: 15px;
+    z-index: 1;
+}
+
+header h1 {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.3em;
+    margin-right: auto;
+    margin-left: 30px;
+}
+
+.loading {
+    height: 20px;
+    width: 20px;
+    margin-left: 30px;
+    border: solid 4px #fff;
+    border-top-color: rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
+}
+
+header button, header .profile {
+    margin-right: 30px;
+}
+
+.profile {
+    cursor: pointer;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ----- Main ----- */
+
+main {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 150px;
+}
+
+/* --- Search --- */
+
+.search_result_box {
+    position: relative;
+    width: 600px;
+}
+
+.search_results {
+    overflow: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    min-height: 60vh;
+    width: 100%;
+}
+
+.fadeTop {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to bottom, #27235c 0%, #241e5a00 100%);
+    z-index: 1;
+}
+
+.fadeBottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to top, #241e5a 0%, #241e5a00 100%);
+    z-index: 1;
+}
+
+.result {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 20px 60px;
+    transition: .19s;
+    animation: .5s ease-out 0s 1 fadeIn;
+}
+
+.result h2 {
+    display: flex;
+    align-items: center;
+    font-family: 'Avenir Black';
+    font-size: 1.3em;
+    margin-left: 30px;
+}
+
+.result h2 img {
+    margin-left: 30px;
+}
+
+.result::after {
+    position: absolute;
+    right: 0;
+    content: "";
+    width: 10px;
+    height: 60%;
+    background: #4b5e97;
+    border-radius: 20px;
+    margin-right: 40px;
+    transition: .21s ease-out;
+}
+.result:hover {
+    background: #373186;
+    z-index: 2;
+}
+.result:hover::after {
+    background: #fda93b;
+}
+
+/* --- Form --- */
+
+.form_happy {
+    text-align: center;
+    width: 400px;
+}
+
+.form_happy h3 {
+    text-align: left;
+}
+
+.form_happy p {
+    margin: 20px 0 30px 0;
+}
+
+.form_happy input {
+    margin-bottom: 20px;
+}
+
+/* Response messege on top of each form */
+.response_message {
+    padding: 10px 0;
+    width: 100%;
+}
+
+.response_message h2 {
+    font-family: 'Avenir Black';
+    font-size: 1em;
+}
+
+.response_message.error {
+    background: #ff3b3b80;
+}
+
+/* --- Profile Page --- */
+
+.profile_box {
+    line-height: 1.5;
+    font-family: 'Avenir Black';
+    padding-top: 100px;
+}
+
+.profile_box .profile {
+    margin: 0 auto;
+    width: 160px;
+    height: 160px;
+}
+
+.profile_box *:not(label):not(div) {
+    text-align: center;
+}
+
+.profile_box h1 {
+    margin-top: 20px;
+}
+
+.profile_box h2 {
+    cursor: pointer;
+}
+
+.profile_settings {
+    height: 600px;
+}
+
+/* - Profile edit checkbox - */
+
+.check_container {
+    flex-shrink: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: all !important;
+    margin-bottom: 50px;
+}
+
+.check_container h2 {
+    margin-right: 10px;
+    margin-top: 1px;
+    font-family: 'Avenir Black';
+}
+
+#edit {
+    display: none;
+}
+
+#edit:checked ~ .checkbox_label div {
+    transform: translateX(20px);
+    background: #50ff99;
+}
+
+.checkbox_label {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 20px;
+    background: #3a3aa7;
+    border-radius: 20px;
+    border: none;
+}
+
+.checkbox_label div {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #808080;
+    border-radius: 50%;
+    padding: 1px;
+    margin-top: -1px;
+    top: 0;
+    left: 0;
+    transition: transform .1s ease-in-out, background .1s ease-in-out;
+}
+
+/* - Profile Page Form (Edit) - */
+
+.profile_settings form {
+    text-align: center;
+    /* width: 500px; */
+}
+
+.edit_form {
+     width: 700px;
+}
+
+/* .camera_form .setting:last-child {
+    margin-bottom: 40px;
+} */
+
+.setting {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.setting h4:first-child {
+    text-align: right;
+}
+.setting h4:last-child {
+    text-align: left;
+}
+
+.setting h4 {
+    width: 126px;
+    text-transform: capitalize;
+    font-family: 'Avenir Black';
+}
+
+.edit_form label {
+    margin-left: 20px;
+}
+
+/* CamerShake checkbox */
+
+#camerashake {
+    display: none;
+}
+
+#camerashake:checked ~ .camerashake_label p {
+    opacity: 1;
+}
+
+.camerashake_label {
+    cursor: pointer;
+    position: relative;
+    background: #4c4cc5;
+    width: 20px;
+    height: 20px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.camerashake_label p {
+    opacity: 0;
+    color: #fff;
+    margin: 0;
+    font-weight: 700;
+}
+
+/* - Profile Page Form (Inspect) - */
+
+.profile_settings {
+    margin-left: 40px;
+}
+
+.inspect_form {
+    pointer-events: none;
+}
+
+.inspect_form input[type=range]::-moz-range-thumb, .inspect_form input[type=range]::-webkit-slider-thumb {
+    background: none;
+}
+
+.inspect_form .setting h4:first-child {
+    position: absolute;
+    right: -125px;
+    text-align: left;
+    color: #c2c2c2;
+}
+
+.inspect_form .setting h4:last-child {
+    position: absolute;
+    text-align: center;
+}
+
+/* ----- KeyFrames & Animation Classes ----- */
+
+.fadeIn {
+    opacity: 1;
+    animation: .5s ease-out 0s 1 fadeIn;
+}
+
+.fadeOut {
+    opacity: 0;
+    animation: .5s ease-in 0s 1 fadeOut;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15%);
+    }
+    10% {
+        opacity: 0;
+        transform: translateY(15%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    80% {
+        opacity: 0;
+        transform: translateY(-15%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-15%);
+    }
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+
+/* ----- Media Querys ----- */
+
+@media screen and (max-width: 400px) {
+    .edit_form input[type=range] {
+        width: 80%;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
+    .edit_form h4 {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    h1, h2 {
+        text-align: center;
+    }
+
+    main {
+        display: block;
+        padding-top: 106px;
+    }
+
+    .search_box {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0 auto;
+        max-width: 400px;
+    }
+
+    .search_result_box {
+        margin: 20px auto;
+    }
+
+    .search_results {
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 50px;
+        overflow: none;
+    }
+
+    .result {
+        margin: 0 auto;
+        width: 80%;
+    }
+
+    .search_results {
+        max-height: none;
+    }
+
+    .profile_box {
+        padding-top: 0;
+    }
+
+    .profile_settings {
+        margin-left: 0;
+    }
+
+    .edit_form {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .search_box {
+        align-self: center;
+    }
+
+    .search_result_box {
+        margin-left: 190px;
+        margin-right: -60px;
+    }
+
+    .inspect_form {
+        margin-left: 57px;
+        padding-right: 70px;
+    }
+
+    .edit_form {
+        margin-right: -140px;
+        margin-left: -3px;
+    }
+}
